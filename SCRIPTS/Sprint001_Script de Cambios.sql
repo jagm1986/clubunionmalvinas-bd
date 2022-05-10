@@ -25,6 +25,15 @@ create table socio
         foreign key (estado_socio_id) references estado_socio (id)
 );
 
+
+create table Tipo_Documento
+(
+    id          bigint       not null
+        primary key,
+    descripcion varchar(255) null
+);
+
+
 import random
 
 
