@@ -5,33 +5,31 @@ create table estado_socio
     descripcion varchar(255) null
 );
 
-create table socio
-(
-    id                bigint       not null
-        primary key,
-    apellido          varchar(255) null,
-    direccion         varchar(255) null,
-    documento         varchar(255) null,
-    email             varchar(255) null,
-    fecha_socio       varchar(255) null,
-    nombre            varchar(255) null,
-    telefono          varchar(255) null,
-    url_foto          varchar(255) null,
-    estado_socio_id   bigint       null,
-    tipo_documento_id bigint       null,
-    constraint FK1ktmvw7ujxnm0wn5pxxbc7dtw
-        foreign key (tipo_documento_id) references tipo_documento (id),
-    constraint FKn2de2e3guudsmb4auge07slnf
-        foreign key (estado_socio_id) references estado_socio (id)
-);
-
-
 create table Tipo_Documento
 (
     id          bigint       not null
         primary key,
     descripcion varchar(255) null
 );
+
+CREATE TABLE `socio` (
+  `id` bigint(20) NOT NULL,
+  `apellido` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `direccion` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `documento` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `fecha_socio` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `nombre` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `telefono` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `url_foto` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `estado_socio_id` bigint(20) DEFAULT NULL,
+  `tipo_documento_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `socio_FK` (`tipo_documento_id`),
+  KEY `socio_FK_1` (`estado_socio_id`),
+  CONSTRAINT `socio_FK` FOREIGN KEY (`tipo_documento_id`) REFERENCES `Tipo_Documento` (`id`),
+  CONSTRAINT `socio_FK_1` FOREIGN KEY (`estado_socio_id`) REFERENCES `estado_socio` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci
 
 
 import random
